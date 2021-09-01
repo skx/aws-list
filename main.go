@@ -169,11 +169,11 @@ func main() {
 	//
 	// Get the connection, using default creds
 	//
-	sess, err := session.NewSession(&aws.Config{
+	sess, err2 := session.NewSession(&aws.Config{
 		Region: aws.String("eu-central-1"),
 	})
-	if err != nil {
-		fmt.Printf("AWS login failed: %s\n", err.Error())
+	if err2 != nil {
+		fmt.Printf("AWS login failed: %s\n", err2.Error())
 		return
 	}
 
@@ -181,9 +181,9 @@ func main() {
 	// Create a new session to find our account
 	//
 	stsSvc := sts.New(sess)
-	out, err := stsSvc.GetCallerIdentity(&sts.GetCallerIdentityInput{})
-	if err != nil {
-		fmt.Printf("Failed to get identity: %s", err.Error())
+	out, err3 := stsSvc.GetCallerIdentity(&sts.GetCallerIdentityInput{})
+	if err3 != nil {
+		fmt.Printf("Failed to get identity: %s", err3.Error())
 		return
 	}
 
